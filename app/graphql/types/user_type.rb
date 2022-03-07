@@ -9,6 +9,8 @@ class Types::UserType < Types::BaseObject
   field :street, String, null: true
   field :country, String, null: true
   field :created_at, GraphQL::Types::ISO8601DateTime, null: false
+  field :email, String, null: true
+  field :is_superadmin, Boolean, null: true
 
   field :full_address, String, null: true
 
@@ -17,6 +19,10 @@ class Types::UserType < Types::BaseObject
   end
 
   field :posts, [Types::PostType], null: true, description: "A user's posts"
+
+  def self.visible?(context) 
+    !!context[:current_user]
+  end
 
 
 end

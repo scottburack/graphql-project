@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_18_214603) do
+ActiveRecord::Schema.define(version: 2022_03_07_221218) do
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(version: 2022_02_18_214603) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "key"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -44,6 +51,9 @@ ActiveRecord::Schema.define(version: 2022_02_18_214603) do
     t.string "country"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
+    t.boolean "is_superadmin"
+    t.string "email"
   end
 
 end
